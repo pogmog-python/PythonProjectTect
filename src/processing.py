@@ -1,14 +1,14 @@
 from typing import Dict, List
 
 
-def filter_by_state(last_dict: List[Dict], value_key: str = "EXECUTED") -> List[Dict]:
+def filter_by_state(dictionary_list: List[Dict], value_key: str = "EXECUTED") -> List[Dict]:
     """Принимает список словарей и ключ: state (по умолчанию 'EXECUTED').
     Возвращает новый список словарей, содержащий словари соответствующих ключ"""
-    new_list_dict = []
-    for every_dict in last_dict:
+    new_dictionary_list = []
+    for every_dict in dictionary_list:
         if every_dict["state"] == value_key:
-            new_list_dict.append(every_dict)
-    return new_list_dict
+            new_dictionary_list.append(every_dict)
+    return new_dictionary_list
 
 
 def sort_by_date(list_dict: List[Dict], arg_for_sort: bool = True) -> List[Dict]:
