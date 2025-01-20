@@ -1,5 +1,7 @@
 def get_mask_card_number(card_num: str) -> str:
     """Функция маскировки номера банковской карты"""
+    if not card_num:  # Проверка на пустую строку
+        return "  ** ****  "
     total_card_num = str(card_num)
     return f"{total_card_num[:4]} {total_card_num[4:6]}** **** {total_card_num[-4:]}"
 
