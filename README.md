@@ -43,6 +43,9 @@ executed_transactions = filter_by_state(transactions)
 # Пример использования sort_by_date
 sorted_transactions = sort_by_date(transactions)
 ```
+## Тестирование 
+
+Произведено тестирование всех функций в директории src. Тесты находятся в директории tests в модуле test_func_project.py
 ## Вклад
 
 Если вы хотите внести свой вклад, пожалуйста, создайте форк репозитория и отправьте пул-реквест.
