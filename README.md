@@ -31,6 +31,7 @@ Visa Platinum 7000 79** **** 6361  # выход функции
 Примеры использования функций:
 
 ```python
+
 from src.processing import filter_by_state, sort_by_date
 
 # Пример использования filter_by_state
@@ -43,9 +44,49 @@ executed_transactions = filter_by_state(transactions)
 # Пример использования sort_by_date
 sorted_transactions = sort_by_date(transactions)
 ```
+
+## Создан новый модуль generators.py
+
+Создана функция
+filter_by_currency, которая принимает на вход список словарей, представляющих транзакции.
+Функция возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной (например, USD).
+
+
+Пример использования функции
+
+```python
+
+from src.generators import filter_by_currency
+
+transactions = {
+          "id": 939719570,
+          "state": "EXECUTED",
+          "date": "2018-06-30T02:08:58.425572",
+          "operationAmount": {
+              "amount": "9824.07",
+              "currency": {
+                  "name": "USD",
+                  "code": "USD"
+              }
+          },
+          "description": "Перевод организации",
+          "from": "Счет 75106830613657916952",
+          "to": "Счет 11776614605963066702"
+      }
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
+```
+
+Написан генератор transaction_descriptions, который принимает список словарей с транзакциями и возвращает описание каждой операции по очереди.
+
+Создан генератор card_number_generator, который выдает номера банковских карт в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты. Генератор может сгенерировать номера карт в заданном диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999.
+Генератор должен принимать начальное и конечное значения для генерации диапазона номеров.
+
 ## Тестирование 
 
 Произведено тестирование всех функций в директории src. Тесты находятся в директории tests в модуле test_func_project.py
+Произведено тестирование новых генераторных функций в модуле test_generators.py
 
 ## Вклад
 
