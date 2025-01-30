@@ -2,6 +2,8 @@ import pytest
 from src.generators import filter_by_currency
 from src.generators import transaction_descriptions
 from src.generators import card_number_generator
+
+
 @pytest.fixture
 def transactions_data():
     return [
@@ -12,6 +14,7 @@ def transactions_data():
         {'id': 5, 'description': 'Перевод организации', 'operationAmount': {'amount': '500', 'currency': {'code': 'USD'}}},
     ]
 
+
 def test_filter_usd(transactions_data):
     usd_transactions = list(filter_by_currency(transactions_data, "USD"))
     assert len(usd_transactions) == 3  # Мы ожидаем 3 транзакции в USD
@@ -20,13 +23,16 @@ def test_filter_usd(transactions_data):
     assert usd_transactions[1]['id'] == 3
     assert usd_transactions[2]['id'] == 5
 
+
 def test_filter_no_usd(transactions_data):
     no_usd_transactions = list(filter_by_currency(transactions_data, "GBP"))
     assert len(no_usd_transactions) == 0
 
+
 def test_empty_list():
     empty_transactions = list(filter_by_currency([], "USD"))
     assert len(empty_transactions) == 0
+
 
 def test_no_matching_currency():
     transactions_data = [
@@ -40,6 +46,7 @@ def test_no_matching_currency():
     filtered_transactions = list(filter_by_currency(transactions_data, "USD"))
     assert len(filtered_transactions) == 0
 
+
 @pytest.fixture
 def transactions_data2():
     return [
@@ -49,6 +56,7 @@ def transactions_data2():
         {"id": 4, "description": "Перевод с карты на карту"},
         {"id": 5, "description": "Перевод организации"},
     ]
+
 
 def test_transaction_descriptions(transactions_data2):
     descriptions = transaction_descriptions(transactions_data2)
@@ -61,9 +69,11 @@ def test_transaction_descriptions(transactions_data2):
         "Перевод организации"
     ]
 
+
 def test_empty_transactions():
     empty_descriptions = transaction_descriptions([])
     assert list(empty_descriptions) == []
+
 
 def test_missing_description():
     transactions_with_missing_description = [
@@ -75,6 +85,7 @@ def test_missing_description():
         "Описание отсутствует",
         "Перевод организации"
     ]
+
 
 @pytest.mark.parametrize("start, end, expected", [
     (1, 5, [
@@ -97,6 +108,7 @@ def test_missing_description():
 ])
 def test_card_number_generator(start, end, expected):
     assert list(card_number_generator(start, end)) == expected
+
 
 def test_card_number_generator_edge_cases():
     # Проверка на крайние значения

@@ -1,5 +1,5 @@
 import pytest
-from typing import List, Dict
+
 
 # Импортируем функции, которые будем тестировать
 from src.masks import get_mask_card_number, get_mask_account
@@ -7,7 +7,7 @@ from src.processing import filter_by_state, sort_by_date
 from src.widget import mask_account_card, get_date
 
 
-#Пример фикстуры для тестов
+# Пример фикстуры для тестов
 @pytest.fixture
 def sample_data():
     """
@@ -78,5 +78,5 @@ def test_get_date():
     assert get_date("") == ".."
 
 # Запуск тестов
-#if __name__ == "__main__":
-#pytest.main()
+# if __name__ == "__main__":
+# pytest.main()
