@@ -43,7 +43,7 @@ def read_transactions_from_excel(file_path: str) -> list:
         return []
 
 
-# Пример использования
+# Пример использования.
 if __name__ == "__main__":
     csv_file_path = 'data/transactions.csv'  # Путь к CSV файлу
     excel_file_path = 'data/transactions_excel.xlsx'  # Путь к Excel файлу
