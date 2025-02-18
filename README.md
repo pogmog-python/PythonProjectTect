@@ -93,6 +93,18 @@ def my_function(x, y):
 
 my_function(1, 2)
 ```
+## Реализовано считывание финансовых операций из CSV- и XLSX-файлов в модуле reading_fin_transactions.py
+```python Пример использования
+if __name__ == "__main__":
+    csv_file_path = 'data/transactions.csv'  # Путь к CSV файлу
+    excel_file_path = 'data/transactions_excel.xlsx'  # Путь к Excel файлу
+
+    csv_transactions = read_transactions_from_csv(csv_file_path)
+    excel_transactions = read_transactions_from_excel(excel_file_path)
+
+    print(csv_transactions)
+    print(excel_transactions)
+```
 ## Тестирование 
 
 Произведено тестирование всех функций в директории src. Тесты находятся в директории tests в модуле test_func_project.py
