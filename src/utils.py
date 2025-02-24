@@ -17,6 +17,7 @@ file_handler.setFormatter(formatter)
 # Добавление обработчиков к логгеру
 logger.addHandler(file_handler)
 
+
 def load_transactions(file_path):
     """Загружает транзакции из указанного файла."""
     # Проверяем, существует ли файл
@@ -41,6 +42,7 @@ def load_transactions(file_path):
     except IOError as e:
         logger.error(f'Ошибка ввода-вывода при чтении файла {file_path}: {e}')
         return []
+
 
 # Пример использования
 if __name__ == "__main__":

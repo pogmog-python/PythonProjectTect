@@ -51,4 +51,5 @@ def get_transaction_amount_in_rub(transaction):
     else:
         raise ValueError("Unsupported currency")
 
+
 print(API_KEY)
